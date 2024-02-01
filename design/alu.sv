@@ -21,6 +21,8 @@ module alu#(
                     ALUResult = $signed(SrcA) + $signed(SrcB);
             4'b1000:        // Equal
                     ALUResult = (SrcA == SrcB) ? 1 : 0;
+            4'b1001:        // NotEqual
+                    ALUResult = (SrcA == SrcB) ? 0 : 1;
             default:
                     ALUResult = 0;
             endcase
