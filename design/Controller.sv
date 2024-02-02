@@ -17,7 +17,9 @@ module Controller (
     output logic MemRead,  //Data memory contents designated by the address input are put on the Read data output
     output logic MemWrite, //Data memory contents designated by the address input are replaced by the value on the Write data input.
     output logic [1:0] ALUOp,  //00: LW/SW; 01:Branch; 10: Rtype
-    output logic Branch  //0: branch is not taken; 1: branch is taken
+    output logic Branch,  //0: branch is not taken; 1: branch is taken
+    output logic JalrSel,  //0 branch não é seguido, 1 branch é seguido
+    output logic [1:0] RWSel 
 );
 
   logic [6:0] R_TYPE, LW, SW, BR, INT_IMED_REG, JAL, JALR, LUI;
@@ -37,12 +39,16 @@ module Controller (
 
   
 
-  assign ALUSrc = (Opcode == LW || Opcode == SW || Opcode == INT_IMED_REG);
+  assign ALUSrc = (Opcode == LW || Opcode == SW || Opcode == INT_IMED_REG || Opcode == LUI || Opcode == JAL || Opcode == JALR);
   assign MemtoReg = (Opcode == LW);
-  assign RegWrite = (Opcode == R_TYPE || Opcode == LW || Opcode == INT_IMED_REG);
+  assign RegWrite = (Opcode == R_TYPE || Opcode == LW || Opcode == INT_IMED_REG || Opcode == LUI || Opcode == JAL || Opcode == JALR);
   assign MemRead = (Opcode == LW);
   assign MemWrite = (Opcode == SW);
-  assign ALUOp[0] = (Opcode == BR);
-  assign ALUOp[1] = (Opcode == R_TYPE || Opcode == INT_IMED_REG);
-  assign Branch = (Opcode == BR);
+  assign ALUOp[0] = (Opcode == BR || Opcode == LUI || Opcode == JAL || Opcode == JALR);
+  assign ALUOp[1] = (Opcode == R_TYPE || Opcode == INT_IMED_REG || Opcode == LUI || Opcode == JAL || Opcode == JALR);
+  assign Branch = (Opcode == BR) || (Opcode == JAL) || (Opcode == JAL);
+  assign JalrSel = (Opcode == JALR);
+  assign RWSel[0] = (Opcode == JAL || Opcode == JALR);
+  assign RWSel[1] = (0);
+
 endmodule
