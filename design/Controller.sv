@@ -45,6 +45,6 @@ module Controller (
   assign MemWrite = (Opcode == SW);
   assign ALUOp[0] = (Opcode == BR || Opcode == LUI || Opcode == JAL || Opcode == JALR);
   assign ALUOp[1] = (Opcode == R_TYPE || Opcode == INT_IMED_REG || Opcode == LUI || Opcode == JAL || Opcode == JALR);
-  assign Branch = (Opcode == BR);
+  assign Branch = (Opcode == BR) || (Opcode == JAL);
   assign JalrSel = (Opcode == JALR);
 endmodule
