@@ -19,7 +19,8 @@ module ALUController (
   assign Operation[1] = (ALUOp == 2'b00) ||  // LW\SW
       ((ALUOp == 2'b10) && (Funct3 == 3'b000)) ||  // R\I-add,addi,sub
       ((ALUOp == 2'b10) && (Funct3 == 3'b100)) ||  // R\I-xor
-      ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0100000));  // R\I->>>
+      ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0100000)) ||  // R\I->>>
+      ((ALUOp== 2'b01) && (Funct3== 3'b100)); //BLT
     
   assign Operation[2] =  ((ALUOp==2'b10) && (Funct3==3'b101) && (Funct7==7'b0000000)) || // R\I->>
       ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0100000)) ||  // R\I->>>

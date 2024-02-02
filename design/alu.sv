@@ -29,6 +29,8 @@ module alu#(
                     ALUResult = (SrcA == SrcB) ? 1 : 0;
             4'b1001:        // NotEqual
                     ALUResult = (SrcA == SrcB) ? 0 : 1;
+            4'b1010:        // Lower than
+                    ALUResult = (SrcA < SrcB) ? 1 : 0;   
             default:
                     ALUResult = 0;
             endcase
