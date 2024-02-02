@@ -20,13 +20,21 @@ module Controller (
     output logic Branch  //0: branch is not taken; 1: branch is taken
 );
 
-  logic [6:0] R_TYPE, LW, SW, BR, INT_IMED_REG;
+  logic [6:0] R_TYPE, LW, SW, BR, INT_IMED_REG, JAL, JALR, LUI;
 
   assign R_TYPE = 7'b0110011;  //add,and,or,sub,xor
   assign LW = 7'b0000011;  //lw
   assign SW = 7'b0100011;  //sw
   assign BR = 7'b1100011;  //beq,bne
+  
   assign INT_IMED_REG = 7'b0010011; //addi
+
+  assign JAL = 7'b1101111; // jal
+  assign JALR = 7'b1100111; // jalr
+
+  assign LUI = 7'b0110111; // lui
+  
+
   
 
   assign ALUSrc = (Opcode == LW || Opcode == SW || Opcode == INT_IMED_REG);
