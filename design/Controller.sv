@@ -22,7 +22,7 @@ module Controller (
 
   logic [6:0] R_TYPE, LW, SW, BR, INT_IMED_REG;
 
-  assign R_TYPE = 7'b0110011;  //add,and,or,sub
+  assign R_TYPE = 7'b0110011;  //add,and,or,sub,xor
   assign LW = 7'b0000011;  //lw
   assign SW = 7'b0100011;  //sw
   assign BR = 7'b1100011;  //beq,bne
