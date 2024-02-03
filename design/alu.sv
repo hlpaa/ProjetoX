@@ -32,7 +32,7 @@ module alu#(
                 4'b1010:        // Lower than
                         ALUResult = (SrcA < SrcB) ? 1 : 0;
                 4'b0101:        // LUI e JAL
-                        ALUResult = SrcB;
+                        ALUResult = 1;
                 default:
                         ALUResult = 0;
             endcase
