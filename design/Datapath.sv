@@ -10,7 +10,7 @@ module Datapath #(
     parameter DM_ADDRESS = 9,  // Data Memory Address
     parameter ALU_CC_W = 4  // ALU Control Code Width
 ) (
-    input  logic                 clk,
+    input logic clk,
     reset,
     RegWrite,
     MemtoReg,  // Register file writing enable   // Memory or ALU MUX
@@ -18,9 +18,9 @@ module Datapath #(
     MemWrite,  // Register file or Immediate MUX // Memroy Writing Enable
     MemRead,  // Memroy Reading Enable
     Branch,  // Branch Enable
-    JalrSel,
-    RWSel, 
+    JalrSel, 
     input  logic [          1:0] ALUOp,
+    input  logic           [1:0] RWSel,
     input  logic [ALU_CC_W -1:0] ALU_CC,         // ALU Control Code ( input of the ALU )
     output logic [          6:0] opcode,
     output logic [          6:0] Funct7,
@@ -325,9 +325,9 @@ module Datapath #(
 
   mux4 #(32) wrsmux (
       WrmuxSrc,
-      D.PC_Four,
+      D.Pc_Four,
       D.Imm_Out,
-      D.PC_Imm,
+      D.Pc_Imm,
       D.RWSel,
       WB_Data
   );
