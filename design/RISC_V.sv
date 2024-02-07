@@ -60,9 +60,6 @@ module riscv #(
       Branch,
       JalrSel,
       RWSel,
-      PC_Four,
-      Imm_Out,
-
       ALUop,
       Operation,
       opcode,
