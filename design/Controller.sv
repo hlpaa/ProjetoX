@@ -44,9 +44,9 @@ module Controller (
   assign RegWrite = (Opcode == R_TYPE || Opcode == LW || Opcode == INT_IMED_REG || Opcode == LUI || Opcode == JAL || Opcode == JALR);
   assign MemRead = (Opcode == LW);
   assign MemWrite = (Opcode == SW);
-  assign ALUOp[0] = (Opcode == BR || Opcode == LUI || Opcode == JAL || Opcode == JALR);
-  assign ALUOp[1] = (Opcode == R_TYPE || Opcode == INT_IMED_REG || Opcode == LUI || Opcode == JAL || Opcode == JALR);
-  assign Branch = (Opcode == BR) || (Opcode == JAL) || (Opcode == JAL);
+  assign ALUOp[0] = (Opcode == BR || Opcode == LUI || Opcode == JAL);
+  assign ALUOp[1] = (Opcode == R_TYPE || Opcode == INT_IMED_REG || Opcode == LUI || Opcode == JAL);
+  assign Branch = (Opcode == BR) || (Opcode == JAL) || (Opcode == JALR);
   assign JalrSel = (Opcode == JALR);
   assign RWSel[0] = (Opcode == JAL || Opcode == JALR);
   assign RWSel[1] = (0);

@@ -229,6 +229,7 @@ module Datapath #(
       B.Curr_Pc,
       B.ImmG,
       B.Branch,
+      B.JalrSel,
       ALUResult,
       BrImm,
       Old_PC_Four,
