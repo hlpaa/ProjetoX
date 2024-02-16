@@ -29,10 +29,13 @@ module alu#(
                         ALUResult = (SrcA == SrcB) ? 1 : 0;
                 4'b1001:        // NotEqual
                         ALUResult = (SrcA == SrcB) ? 0 : 1;
-                4'b1010:        // Lower than
+                4'b1010:        // BLT
                         ALUResult = (SrcA < SrcB) ? 1 : 0;
+                4'b1011:        // BGE
+                        ALUResult = (SrcA >= SrcB) ? 1 : 0;
                 4'b0101:        // LUI e JAL
                         ALUResult = 1;
+                
                 default:
                         ALUResult = 0;
             endcase
