@@ -324,9 +324,9 @@ module Datapath #(
   );
 
   mux4 #(32) wrsmux (
-      Imm_Out,
+      WrmuxSrc,     
       D.Pc_Four,
-      WrmuxSrc,
+      Imm_Out,
       D.Pc_Imm,
       D.RWSel,
       WB_Data
