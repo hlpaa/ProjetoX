@@ -41,6 +41,8 @@ module alu#(
                         ALUResult = SrcA << SrcB;
                 4'b0101: 
                         ALUResult = SrcA >> SrcB;
+                4'b0111: 
+                        ALUResult = $signed(SrcA) >>> SrcB;
                 
                 default:
                         ALUResult = 0;
