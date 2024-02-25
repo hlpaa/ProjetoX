@@ -29,21 +29,24 @@ module datamemory #(
   );
 
   always_ff @(*) begin
-    raddress = {{22{1'b0}}, a[8:2], {2{1'b0}}};
+    raddress = {{22{1'b0}}, a};
     waddress = {{22{1'b0}}, a[8:2], {2{1'b0}}};
     Datain = wd;
     Wr = 4'b0000;
 
     if (MemRead) begin
       case (Funct3)
-        3'b000: //LB
-        rd <= Dataout[7:0];
-        3'b001: //LH
-        rd <= Dataout[15:0];
+        3'b000:  begin//LB
+            rd <= $signed(Dataout[7:0]);
+        end
+        3'b001: begin//LH
+            rd <= $signed(Dataout[15:0]);
+        end
         3'b010:  //LW
         rd <= Dataout;
-        3'b100: //LBU
-        rd <= Dataout[7:0];
+        3'b100: begin //LBU
+            rd <= {24'b0, Dataout[7:0]};
+        end
         default: rd <= Dataout;
       endcase
     end else if (MemWrite) begin
@@ -53,12 +56,12 @@ module datamemory #(
           Datain <= wd;
         end
         3'b000: begin  //SB
-          Wr <= 4'b0001;
-          Datain <= wd;
+          Wr <= 4'b0100;
+          Datain[7:0] = wd;
         end
         3'b001: begin  //SH
-          Wr <= 4'b0011;
-          Datain <= wd;
+          Wr <= 4'b1100;
+          Datain[15:0] = wd;
         end
         default: begin
           Wr <= 4'b1111;
