@@ -37,7 +37,9 @@ module riscv #(
       ALUop,
       Branch,
       JalrSel,
-      RWSel
+      RWSel,
+      Jump,
+      Halt
   );
 
   ALUController ac (
