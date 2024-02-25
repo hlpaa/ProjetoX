@@ -27,6 +27,9 @@ module imm_Gen (
       7'b0010011: /*I_TYPE integer part*/
       Imm_out = {inst_code[31] ? 20'hFFFFF : 20'b0, inst_code[31:20]};
 
+      7'b0110111: // LUI
+      Imm_out = {inst_code[31], inst_code[31:12], 12'b0};
+      
       7'b1101111: // JAL
       Imm_out = {
         inst_code[31] ? 11'h7FF : 11'b0,

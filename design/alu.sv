@@ -33,8 +33,8 @@ module alu#(
                         ALUResult = (SrcA < SrcB) ? 1 : 0;
                 4'b1011:        // BGE
                         ALUResult = (SrcA >= SrcB) ? 1 : 0;
-                4'b1111:        // LUI e JAL
-                        ALUResult = 1;
+                4'b1111:        // LUI
+                        ALUResult = SrcB;
                 4'b1100:        // SLTI
                         ALUResult = (SrcA < SrcB) ? 1 : 0; 
                 4'b0100:
