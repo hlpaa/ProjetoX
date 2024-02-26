@@ -40,7 +40,7 @@ module Controller (
 
   assign LUI = 7'b0110111; // lui
 
-  assign HALT = 7'b0000000; // halt
+  assign HALT = 7'b1111111; // halt
   
 
   assign ALUSrc = (Opcode == LW || Opcode == SW || Opcode == INT_IMED_REG || Opcode == LUI || Opcode == JAL || Opcode == JALR);
