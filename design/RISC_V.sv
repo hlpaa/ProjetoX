@@ -59,6 +59,8 @@ module riscv #(
       MemRead,
       Branch,
       JalrSel,
+      Jump,
+      Halt,
       ALUop,
       RWSel,
       Operation,
