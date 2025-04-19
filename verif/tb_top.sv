@@ -8,7 +8,7 @@ module tb_top;
 
   logic [4:0] reg_num;
   logic [31:0] reg_data;
-  logic reg_write_sig;
+  logic signed reg_write_sig;
   logic wr;
   logic rd;
   logic [8:0] addr;
