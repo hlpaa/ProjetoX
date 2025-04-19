@@ -37,12 +37,12 @@ module alu#(
                         ALUResult = SrcB;
                 4'b1100:        // SLTI
                         ALUResult = (SrcA < SrcB) ? 1 : 0; 
-                4'b0100:
+                4'b0100:        //SLLI
                         ALUResult = SrcA << SrcB;
-                4'b0101: 
+                4'b0101:         // SRLI
                         ALUResult = SrcA >> SrcB;
-                4'b0111: 
-                        ALUResult = $signed(SrcA) >>> SrcB;
+                4'b0111:         // SRAI
+                        ALUResult = $signed(SrcA) >>> SrcB[4:0];
                 
                 default:
                         ALUResult = 0;
